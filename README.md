@@ -4,9 +4,9 @@
  - Check Storage-designs.txt file;
 
  ## Second Taks
- -Developed in Node.js
- -DockerFile available
- -run: npm i && npm start
+ - Developed in Node.js
+ - DockerFile available
+ - run: npm i && npm start
  
  - routes 
  - - get-> '/wms' - Read all data
