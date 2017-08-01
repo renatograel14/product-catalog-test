@@ -12,6 +12,8 @@
  - - get-> '/wms' - Read all data
  - - post-> '/wms' - Input data (object or array)
 
+## Third Task
+- Check failure-solution.txt
 
 # Case Study Tech
 
