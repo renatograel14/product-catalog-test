@@ -1,0 +1,63 @@
+Key value database 
+Entinties - Customer, Customers_Adresses, Customer_Payment_Methods
+
+Customer
+User_Id -> name,phone,email,details
+
+Customers_Adresses
+User_Id -> number_building,number_street,area_locality,city,state_province,country_code,details
+
+Customer_Payment_Methods
+User_Id -> card_number,date_from,data_to,details
+
+Pros
+
+	-> Eficient and Simple queries
+	-> Simple and Flexible modeling
+	-> Support great mass of data
+
+Cons
+	-> Not compatible to complex queries
+	-> Denormalized data
+	-> Coupling Code to the Database modeling
+
+
+MongoDB - Collections 
+
+Cutomers 
+
+User_Id 
+	name: string
+	phone: string
+	email: string
+	details: string
+
+
+Customers_Adresses
+	User_Id : []
+		number_building: number
+		number_street: number
+		area_locality: string
+		city: string
+		state_province: string
+		country_code: string
+		details: string
+
+Customer_Payment_Methods
+	User_Id : []
+		card_number: string
+		date_from: string
+		data_to: string
+		details: string
+
+
+	Pros
+		-> Fast
+		-> Allow more complex queries than Key-Value
+		-> Allow Dynamic Schema
+		-> JSON Based and less code
+	
+	Cons
+		-> Do not support Complex transactions
+		-> Concurrency (locks per collections on write)
+		-> Allow less complex queries than SQL Databases

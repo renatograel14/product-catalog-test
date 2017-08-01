@@ -1,3 +1,18 @@
+# Pull request from Renato Grael Teixeira
+ 
+ ## First Task
+ - Check Storage-designs.txt file;
+
+ ## Second Taks
+ -Developed in Node.js
+ -DockerFile available
+ -run: npm i && npm start
+ 
+ - routes 
+ - - get-> '/wms' - Read all data
+ - - post-> '/wms' - Input data (object or array)
+
+
 # Case Study Tech
 
 - You don't have a lock in time to finish, but we know how long it takes to be

@@ -1,0 +1,55 @@
+Third Task
+
+Bibliotecas para utilizar 
+    ReactiveX,
+    localStorare,
+    cookies/localStorage
+
+
+    Introdução
+
+        Utilizando-se do ReactiveX para estabelecer uma streaming de dados com o webservice é possivel manipular erros e falhas.
+        Após um Request não bem sucedido, utilizando os operadores 'catch' e 'retry' (http://reactivex.io/documentation/operators.html#error) entrão em ação para que possa realizar mais uma tentativa do streaming.
+
+    
+    Capturando os webservice não disponíveis
+
+        É importante ressaltar da dificuldade de se manipular um erro assícrono, pois torna-se inutilizável o famoso try/catch/finally. 
+        O primeira passo é como capturar os erros na streaming: 
+
+            var source = Rx.Observable.catch(
+                get('localhost:3000/wms'),  //stremming de produção
+                get('localhost:3001/wms-contigencia'), //straming de contigência
+                getCachedVersion() //straming de cache (cookie ou localStorage) 
+            );
+
+            O operador 'catch' fará uma tentativa para cada url e aquela que suceder não precisará chamar o próximo url e então capturar os dados da straeming:
+
+            var subscription = source.subscribe(data => {
+                // dados possíveis: Produção ou Contingencia/Replicação ou Dados no Cache;
+                }
+            );
+
+            É importante aplicar tentativas: 
+
+
+            var source = Rx.Observable.retryWhen(
+                    tentativa => 
+                    tentativa.
+                        .zip(Rx.Observable.range(1,3), (time)=>time) 
+                        .flatMap(time=> {
+                            console.log(`Tempos de espera - ${time} seg`);
+                            return Rx.Observable.timer(i * 1000);
+                        })
+            )
+
+            
+            var subscription = source.subscribe(data => {
+                // Tempos de espera 1 seg
+                // Tempos de espera 2 seg
+                // Tempos de espera 3 seg
+                // Data
+                }
+            );()
+
+
